@@ -1,8 +1,24 @@
+import pytest
 import answer
 
-def test_add():
-    assert (answer.add(1, 2) == 3)
-    assert (answer.add(1, 1) == 2)
-    assert (answer.add(100, 200) == 300)
-    assert (answer.add(0, 1) == 1)
-    assert (answer.add(-1, 1) == 0)
+class TestAnswer():
+
+    __correct__ = 0
+    __total__ = 0
+
+    @classmethod
+    def setup_class(cls):
+        print("Before")
+        cls.__correct__ = 0
+        cls.__total__ = 0
+
+    @classmethod
+    def teardown_class(cls):
+
+
+        print(f"Score:{(cls.__correct__/cls.__total__)*100}%")
+        
+    def test_tuple(self):
+        TestAnswer.__total__ += 1
+        assert(answer.tuple() == (13, 100, 7, 3, 10168, 8679)) 
+        TestAnswer.__correct__ += 1
